@@ -19,7 +19,15 @@ cd scramble_protocol
 
 2) Create and activate the conda/mamba environment
 ```bash
-mamba create -n scrambling_analysis -c bioconda -c conda-forge   python=3.10 sra-tools r-base=4.3 r-argparse r-tidyverse r-igraph   bioconductor-genomicranges bioconductor-plyranges   bioconductor-variantannotation bioconductor-structuralvariantannotation   samtools minimap2 sniffles mosdepth nanomonsv mafft
+mamba create -n scrambling_analysis \
+  -c conda-forge -c bioconda \
+  --strict-channel-priority \
+  python=3.10 r-base=4.4 \
+  sra-tools r-argparse r-tidyverse r-igraph \
+  bioconductor-genomicranges bioconductor-plyranges \
+  bioconductor-variantannotation bioconductor-structuralvariantannotation \
+  samtools minimap2 sniffles mosdepth nanomonsv mafft
+
 conda activate scrambling_analysis
 ```
 
@@ -37,7 +45,7 @@ remotes::install_github("cnobles/gintools")
 
 - `docs/tutorial.md` — step-by-step commands corresponding to Supplementary Information 4
 - `scripts/` — R scripts used by the tutorial (e.g., `find_insertions.R`, `filter_rearrangements.R`)
-- `resources/` — reference download + checksum verification instructions
+- `resources/` — reference download + checksum verification
 - `expected/` — expected outputs
 
 ## Tested compute environments
