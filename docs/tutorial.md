@@ -57,7 +57,15 @@ mv -f hg38.trf.bed genome/hg38.trf.bed
 A dedicated conda/mamba environment is recommended to avoid R/Bioconductor conflicts.
 
 ```bash
-mamba create -n scrambling_analysis -c bioconda -c conda-forge   python=3.10 sra-tools r-base=4.3 r-argparse r-tidyverse r-igraph   bioconductor-genomicranges bioconductor-plyranges   bioconductor-variantannotation bioconductor-structuralvariantannotation   samtools minimap2 sniffles mosdepth nanomonsv mafft
+mamba create -n scrambling_analysis \
+  -c conda-forge -c bioconda \
+  --strict-channel-priority \
+  python=3.10 r-base=4.4 \
+  sra-tools r-argparse r-tidyverse r-igraph \
+  bioconductor-genomicranges bioconductor-plyranges \
+  bioconductor-variantannotation bioconductor-structuralvariantannotation \
+  samtools minimap2 sniffles mosdepth nanomonsv mafft
+
 conda activate scrambling_analysis
 ```
 
@@ -159,7 +167,7 @@ Reference run result:
 - two Cre-induced inversions and one deletion
 - (0.85 seconds on a Macbook Pro M3 Pro, 18 GB RAM)
 
-### 7) Compute coverages (mosdepth)
+### 7) Compute coverages (mosdepth) Optional for plotting
 
 ```bash
 mosdepth -n --by 50000 -t 8 clone17 clone17.bam
